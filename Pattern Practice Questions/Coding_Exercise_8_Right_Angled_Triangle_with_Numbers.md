@@ -2,41 +2,57 @@
 
 ## Problem Description
 
-You are given an integer `n`. Your task is to return a right-angled triangle pattern where each row contains repeated digits. The first row contains the number `1` repeated once, the second row contains the number `2` repeated twice, and so on until the nth row contains the number `n` repeated `n` times.
+You are given an integer `n`. Your task is to return a right-angled triangle pattern where each row contains repeated digits. The first row contains the number `1` repeated once, the second row contains the number `2` repeated twice, and so on until the `n`th row contains the number `n` repeated `n` times.
 
 ---
 
-### Input Parameters
-- `n (int)`: The height of the triangle, where `1 <= n <= 100`.
+## Input
 
-### Output
-A list of strings where each string represents a row in the triangle. The `i-th` row contains the digit `i` repeated `i` times.
+A single integer `n`, where `1 <= n <= 100`.
 
 ---
 
-### Example
+## Output
 
-#### Input:
+A list of strings where each string represents a row in the triangle. The `i`th row contains the digit `i` repeated `i` times.
+
+---
+
+## Examples
+
+### Example 1
+
+**Input:**
 ```
-5
+n = 5
 ```
-#### Output:
+
+**Output:**
 ```
 ['1', '22', '333', '4444', '55555']
 ```
 
-#### Input:
+### Example 2
+
+**Input:**
 ```
-3
+n = 3
 ```
-#### Output:
+
+**Output:**
 ```
 ['1', '22', '333']
 ```
 
 ---
 
-## Solution
+## Approach and Solution
+
+### Brute Force Approach
+
+We iterate through numbers from `1` to `n` using a loop. For each number `i`, we create a string by repeating the digit `i`, `i` times. The resulting string is added to a list, which is returned at the end.
+
+### Implementation
 
 ```python
 def generate_number_triangle(n):
@@ -65,47 +81,57 @@ def generate_number_triangle(n):
 
 ---
 
-### Explanation
+### Step-by-Step Explanation
 
-To solve this problem, we need to create a triangle where:
-1. Each row corresponds to a number that is repeated a certain number of times.
-2. The `i-th` row has the digit `i` repeated `i` times.
-
-#### Steps:
-1. **Initialize the List**: Start with an empty list to store the rows of the triangle.
-2. **Iterate Through Rows**: Use a loop from `1` to `n` (inclusive):
-   - For each `i`, create a string with the digit `i` repeated `i` times using `str(i) * i`.
-   - Append the resulting string to the list.
-3. **Return the List**: After the loop, return the list containing all rows of the triangle.
+1. **Initialization:** Start with an empty list `triangle` to store the rows of the pattern.
+2. **Loop through Rows:** Use a loop from `1` to `n`. For each iteration:
+   - Convert the current number `i` to a string.
+   - Repeat the string `i` times using the `*` operator.
+   - Append the resulting string to the `triangle` list.
+3. **Return the Result:** Once the loop completes, return the list `triangle`.
 
 ---
 
-### Dry Run
+### Example Walkthrough
 
-Let’s dry-run the solution with `n = 3`:
+#### Example 1: Input `n = 5`
 
-1. Initialize `triangle = []`.
-2. Loop starts:
-   - **i = 1**: `row = '1'`, `triangle = ['1']`
-   - **i = 2**: `row = '22'`, `triangle = ['1', '22']`
-   - **i = 3**: `row = '333'`, `triangle = ['1', '22', '333']`
-3. Return `triangle = ['1', '22', '333']`.
+- **Iteration 1:** `i = 1`, `row = '1'`. Append `'1'` to `triangle`.
+- **Iteration 2:** `i = 2`, `row = '22'`. Append `'22'` to `triangle`.
+- **Iteration 3:** `i = 3`, `row = '333'`. Append `'333'` to `triangle`.
+- **Iteration 4:** `i = 4`, `row = '4444'`. Append `'4444'` to `triangle`.
+- **Iteration 5:** `i = 5`, `row = '55555'`. Append `'55555'` to `triangle`.
+
+**Output:** `['1', '22', '333', '4444', '55555']`
+
+#### Example 2: Input `n = 3`
+
+- **Iteration 1:** `i = 1`, `row = '1'`. Append `'1'` to `triangle`.
+- **Iteration 2:** `i = 2`, `row = '22'`. Append `'22'` to `triangle`.
+- **Iteration 3:** `i = 3`, `row = '333'`. Append `'333'` to `triangle`.
+
+**Output:** `['1', '22', '333']`
 
 ---
 
 ### Complexity Analysis
 
-- **Time Complexity**: O(n^2)
-  - For each row `i`, generating `str(i) * i` takes O(i), and the loop runs `n` times. The overall complexity is O(1 + 2 + ... + n) = O(n^2).
+1. **Time Complexity:**
+   - The loop runs `n` times. For each iteration `i`, creating the row takes `O(i)` time.
+   - Total time complexity is `O(1 + 2 + 3 + ... + n) = O(n^2)`.
 
-- **Space Complexity**: O(n^2)
-  - The list storing the rows of the triangle has a total of `1 + 2 + ... + n` characters, which is O(n^2).
-
----
-
-### Optimized Approach
-This approach is already optimal for the problem constraints (`1 <= n <= 100`).
+2. **Space Complexity:**
+   - The output list contains `n` rows, with the `i`th row having `i` characters.
+   - Total space complexity is `O(n^2)`.
 
 ---
 
-Let me know if you need further clarifications or enhancements to this solution!
+### Optimal Solution
+
+The above solution is already optimal for this problem. Further optimizations are not necessary as the pattern generation inherently involves quadratic complexity due to the growth of the rows.
+
+---
+
+## Final Thoughts
+
+This problem demonstrates basic string manipulation and list operations in Python. It is an excellent exercise for beginners to practice loops, string operations, and understanding time-space complexity.
