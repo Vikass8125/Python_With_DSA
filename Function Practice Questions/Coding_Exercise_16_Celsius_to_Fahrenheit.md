@@ -6,68 +6,43 @@ You are given a temperature in Celsius. Your task is to convert it to Fahrenheit
 ### Formula:
 To convert Celsius to Fahrenheit, use the formula:
 
-\[ F = \left( \frac{9}{5} \times C \right) + 32 \]
+\[ F = \left(\frac{9}{5} \times C\right) + 32 \]
 
 Where:
-- \( F \) is the temperature in Fahrenheit
-- \( C \) is the temperature in Celsius
-
----
+- \( F \) is the temperature in Fahrenheit.
+- \( C \) is the temperature in Celsius.
 
 ### Input:
-- A floating-point number \( C \) representing the temperature in Celsius.
+A floating-point number \( C \) representing the temperature in Celsius.
 
 ### Output:
-- A floating-point number representing the temperature in Fahrenheit.
+A floating-point number representing the temperature in Fahrenheit.
 
----
-
-### Examples:
-
-#### Example 1:
+### Example:
 **Input:**
-```plaintext
+```python
 C = 25
 ```
 **Output:**
-```plaintext
+```python
 77.0
 ```
 
-#### Example 2:
 **Input:**
-```plaintext
+```python
 C = 0
 ```
 **Output:**
-```plaintext
+```python
 32.0
 ```
 
 ---
 
-## Solution
-
-### Explanation:
-The formula to convert Celsius to Fahrenheit is simple and straightforward:
-
-\[ F = \left( \frac{9}{5} \times C \right) + 32 \]
-
-1. Multiply the Celsius value \( C \) by \( \frac{9}{5} \).
-2. Add 32 to the result.
-3. The final value is the equivalent temperature in Fahrenheit.
-
-This formula comes from the relationship between the two scales, where:
-- 0°C = 32°F (freezing point of water)
-- 100°C = 212°F (boiling point of water)
-
-By scaling and shifting the values, the formula above is derived.
-
----
+## Solution:
+To solve this problem, we can use the provided formula to convert Celsius to Fahrenheit. This involves multiplying the Celsius value by \( \frac{9}{5} \) and then adding 32.
 
 ### Code Implementation:
-Here is the Python implementation of the solution:
-
 ```python
 def celsius_to_fahrenheit(C):
     """
@@ -85,81 +60,70 @@ def celsius_to_fahrenheit(C):
 
 ---
 
-### Dry Run:
-#### Example 1:
+## Explanation of the Code:
+1. **Input:** The function takes a single input \( C \), which is the temperature in Celsius.
+2. **Formula Application:** The formula \( F = \frac{9}{5} \times C + 32 \) is applied directly.
+3. **Output:** The function returns the calculated Fahrenheit value as a floating-point number.
+
+---
+
+## Dry Run:
+Let's test the function with an example:
+
+### Example 1:
 **Input:**
-```plaintext
+```python
 C = 25
 ```
-**Steps:**
-1. Apply the formula:
-   \[ F = \left( \frac{9}{5} \times 25 \right) + 32 \]
-2. Calculate \( \frac{9}{5} \times 25 \):
-   \[ 45.0 \]
-3. Add 32:
-   \[ 45.0 + 32 = 77.0 \]
+**Execution:**
+- Apply the formula: \( F = \frac{9}{5} \times 25 + 32 \)
+- \( F = 45 + 32 \)
+- \( F = 77.0 \)
 
 **Output:**
-```plaintext
+```python
 77.0
 ```
 
-#### Example 2:
+### Example 2:
 **Input:**
-```plaintext
+```python
 C = 0
 ```
-**Steps:**
-1. Apply the formula:
-   \[ F = \left( \frac{9}{5} \times 0 \right) + 32 \]
-2. Calculate \( \frac{9}{5} \times 0 \):
-   \[ 0.0 \]
-3. Add 32:
-   \[ 0.0 + 32 = 32.0 \]
+**Execution:**
+- Apply the formula: \( F = \frac{9}{5} \times 0 + 32 \)
+- \( F = 0 + 32 \)
+- \( F = 32.0 \)
 
 **Output:**
-```plaintext
+```python
 32.0
 ```
 
 ---
 
-### Complexity Analysis:
+## Complexity Analysis:
 1. **Time Complexity:**
-   - \( O(1) \): The formula involves a constant number of arithmetic operations regardless of the input.
+   - The formula involves a constant number of operations (multiplication and addition).
+   - **O(1):** The computation is constant-time.
 
 2. **Space Complexity:**
-   - \( O(1) \): No additional data structures are used; only a single floating-point number is returned.
+   - The function uses a fixed amount of space for the formula.
+   - **O(1):** No additional space is used that grows with input size.
 
 ---
 
-### Edge Cases:
-1. **Negative Temperatures:**
-   - Input: \( C = -40 \)
-   - Output: \( -40.0 \) (Both scales intersect at -40.)
+## Testing:
+You can test the function with different inputs as follows:
 
-2. **Zero Celsius:**
-   - Input: \( C = 0 \)
-   - Output: \( 32.0 \)
-
-3. **Large Values:**
-   - Input: \( C = 1000 \)
-   - Output: \( 1832.0 \)
-
----
-
-### Test Cases:
 ```python
-def test_celsius_to_fahrenheit():
-    assert celsius_to_fahrenheit(25) == 77.0
-    assert celsius_to_fahrenheit(0) == 32.0
-    assert celsius_to_fahrenheit(-40) == -40.0
-    assert celsius_to_fahrenheit(100) == 212.0
-    assert celsius_to_fahrenheit(37) == 98.6
-    print("All test cases pass")
-
-# Run tests
-test_celsius_to_fahrenheit()
+# Test cases
+print(celsius_to_fahrenheit(25))  # Expected output: 77.0
+print(celsius_to_fahrenheit(0))   # Expected output: 32.0
+print(celsius_to_fahrenheit(-40)) # Expected output: -40.0
+print(celsius_to_fahrenheit(100)) # Expected output: 212.0
 ```
 
-This function is robust, handles edge cases, and ensures accurate conversion for a wide range of inputs.
+---
+
+This concludes the solution for converting Celsius to Fahrenheit. Let me know if you have any further questions or need additional explanations!
