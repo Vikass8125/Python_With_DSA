@@ -1,14 +1,13 @@
 # Count Consonants in a String
 
 ## Problem Statement
-
-Design a Python function named `count_consonants` to count the number of consonants in a given string. A consonant is defined as any alphabetic character that is not a vowel (a, e, i, o, u).
+You are given a string `s`. Your task is to count the number of consonants in the string and return the total count. A consonant is any alphabetic character that is not a vowel (a, e, i, o, u).
 
 ### Parameters:
-- `s` (str): The input string in which you need to count the consonants. The length of `s` is between 1 and 1000.
+- `s` (str): The input string, where the length of `s` is between **1 and 1000**.
 
 ### Returns:
-- An integer representing the total number of consonants in the input string.
+- An integer representing the total count of consonants in the input string.
 
 ---
 
@@ -24,7 +23,7 @@ s = "Hello, World!"
 7
 ```
 **Explanation:**
-- The consonants in the string are `H`, `l`, `l`, `W`, `r`, `l`, and `d`. Hence, the total count is 7.
+- The consonants in the string are: `H, l, l, W, r, l, d` (7 in total).
 
 ### Example 2:
 **Input:**
@@ -36,100 +35,105 @@ s = "Python Programming"
 13
 ```
 **Explanation:**
-- The consonants in the string are `P`, `y`, `t`, `h`, `n`, `P`, `r`, `g`, `r`, `m`, `m`, `n`, and `g`. Hence, the total count is 13.
+- The consonants in the string are: `P, y, t, h, n, P, r, g, r, m, m, n, g` (13 in total).
 
 ---
 
 ## Solution Approach
 
-### Steps to Solve:
-1. **Identify Consonants:**
-   - A consonant is an alphabetic character that is not a vowel (`a, e, i, o, u`).
-   - Use the `isalpha()` method to check if a character is alphabetic.
-   - Exclude vowels by checking if the character is not in the defined set of vowels.
-2. **Iterate Through the String:**
-   - Loop through each character in the input string.
-   - Check if the character is a consonant using the conditions defined above.
-3. **Count Consonants:**
-   - Increment a counter for each consonant found in the string.
-4. **Return the Count:**
-   - Return the total count of consonants after the loop.
+### Brute Force Approach
+1. **Initialize a counter:** Start with `count = 0` to track consonants.
+2. **Define vowels:** Store the vowels (`aeiouAEIOU`) in a string.
+3. **Iterate through each character:**
+   - If the character is an alphabetic letter (`isalpha()`), check if it's **not** a vowel.
+   - If it's a consonant, increase the counter.
+4. **Return the final count.**
 
----
-
-### Code Implementation
+### Brute Force Code Implementation
 ```python
 def count_consonants(s):
     """
     Function to count the number of consonants in the input string.
-
+    
     Parameters:
     s (str): The input string to check for consonants.
-
+    
     Returns:
     int: The count of consonants in the input string.
     """
-    vowels = "aeiouAEIOU"  # Define the set of vowels (both uppercase and lowercase)
+    vowels = 'aeiouAEIOU'  # Define the set of vowels (both uppercase and lowercase)
     count = 0  # Initialize a counter for consonants
-
+    
     # Loop through each character in the string
     for char in s:
-        # Check if the character is an alphabet and not a vowel
+        # Check if the character is a letter
         if char.isalpha() and char not in vowels:
             count += 1  # Increment the count if it is a consonant
-
+    
     return count
 ```
 
 ---
 
-### Code Walkthrough
-1. **Initialization:**
-   - Define `vowels` as a string containing both lowercase and uppercase vowels.
-   - Initialize `count` to 0.
-
-2. **Iterate Through the String:**
-   - For each character `char` in the input string:
-     - Check if `char` is an alphabet using `isalpha()`.
-     - Check if `char` is not in `vowels`.
-     - If both conditions are true, increment the `count`.
-
-3. **Return the Count:**
-   - After the loop, return the final value of `count`.
+## Code Walkthrough
+1. **Define the vowel set:** `vowels = 'aeiouAEIOU'`
+2. **Initialize the count variable:** `count = 0`
+3. **Loop through each character in the string:**
+   - If `char.isalpha()` is `True` and `char not in vowels`, increment `count`.
+4. **Return the count.**
 
 ---
 
-### Dry Run
+## Dry Run
 
-#### Input:
-`s = "Hello, World!"`
+### Input:
+```python
+s = "Hello, World!"
+```
 
-#### Execution Steps:
-| Step | Character | Is Alphabet? | Is Not a Vowel? | Consonant Count |
-|------|-----------|--------------|-----------------|-----------------|
-| 1    | `H`       | Yes          | Yes             | 1               |
-| 2    | `e`       | Yes          | No              | 1               |
-| 3    | `l`       | Yes          | Yes             | 2               |
-| 4    | `l`       | Yes          | Yes             | 3               |
-| 5    | `o`       | Yes          | No              | 3               |
-| 6    | `,`       | No           | -               | 3               |
-| 7    | ` `       | No           | -               | 3               |
-| 8    | `W`       | Yes          | Yes             | 4               |
-| 9    | `o`       | Yes          | No              | 4               |
-| 10   | `r`       | Yes          | Yes             | 5               |
-| 11   | `l`       | Yes          | Yes             | 6               |
-| 12   | `d`       | Yes          | Yes             | 7               |
-| 13   | `!`       | No           | -               | 7               |
+### Execution Steps:
+| Step | Character | Is Alpha? | Is Vowel? | Count |
+|------|----------|-----------|-----------|--------|
+| 1    | H        | ✅        | ❌        | 1      |
+| 2    | e        | ✅        | ✅        | 1      |
+| 3    | l        | ✅        | ❌        | 2      |
+| 4    | l        | ✅        | ❌        | 3      |
+| 5    | o        | ✅        | ✅        | 3      |
+| 6    | ,        | ❌        | -         | 3      |
+| 7    | W        | ✅        | ❌        | 4      |
+| 8    | o        | ✅        | ✅        | 4      |
+| 9    | r        | ✅        | ❌        | 5      |
+| 10   | l        | ✅        | ❌        | 6      |
+| 11   | d        | ✅        | ❌        | 7      |
+| 12   | !        | ❌        | -         | 7      |
 
-**Output:** `7`
+**Final Count:** `7`
 
 ---
+
+## Optimized Solution
+The current solution is already efficient as it processes each character **once**, making it **O(n)** in time complexity. However, we can improve readability by using a `set` for vowels, which allows **O(1)** lookup time.
+
+### Optimized Code Implementation
+```python
+def count_consonants(s):
+    """
+    Optimized function to count consonants using a set for vowels.
+    """
+    vowels = set('aeiouAEIOU')  # Using a set for O(1) lookup time
+    return sum(1 for char in s if char.isalpha() and char not in vowels)
+```
 
 ### Complexity Analysis
+- **Time Complexity:** `O(n)`, where `n` is the length of the string.
+- **Space Complexity:** `O(1)`, since we use a fixed-size set.
 
-1. **Time Complexity:**
-   - The function iterates through each character in the input string, making it **O(n)**, where `n` is the length of the string.
+---
 
-2. **Space Complexity:**
-   - The space usage is constant, **O(1)**, as no additional data structures are used.
+## Summary
+| Approach        | Time Complexity | Space Complexity | Notes |
+|----------------|----------------|------------------|-------|
+| Brute Force    | `O(n)`          | `O(1)`           | Iterates through each character checking conditions. |
+| Optimized Set  | `O(n)`          | `O(1)`           | Uses a set for `O(1)` vowel lookup. |
 
+This solution effectively counts consonants in a given string while handling non-alphabetic characters efficiently.
